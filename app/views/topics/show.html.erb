@@ -7,6 +7,14 @@
         <h1 id="content-title"><%= @topic.title %></h2>
         <a href="/topics" id="backnav">Back to Topics List</a>
     </div>
+    <div id="content-prerequisites" class="content-tile">
+        <h2 class="tile-header">Prerequisites</h2>
+        <ul>
+            <% @topic.prerequisites.each do |prereq| %>
+                <li><%= link_to(prereq.title, topic_path(prereq)) %></li>
+            <% end %>
+        </ul>
+    </div>
     <div id="content" class="content-tile">
         <h2 class="tile-header">Lesson</h2>
         <% renderer = Redcarpet::Render::HTML.new(render_options = {
@@ -18,11 +26,12 @@
             tables: true,
         }).render(@topic.content) %>
     </div>
-
-    <div id="content-prerequisites" class="content-tile">
-        <h2 class="tile-header">Prerequisites</h2>
-    </div>
     <div id="content-nextsteps" class="content-tile">
         <h2 class="tile-header">Next Steps</h2>
+        <ul>
+            <% @topic.nextsteps.each do |nextstep| %>
+                <li><%= link_to(nextstep.title, topic_path(nextstep)) %></li>
+            <% end %>
+        </ul>
     </div>
 </div>

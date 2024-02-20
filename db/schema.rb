@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_20_133540) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_20_181432) do
+  create_table "topic_prerequisites", force: :cascade do |t|
+    t.integer "source_topic_id", null: false
+    t.integer "preq_topic_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preq_topic_id"], name: "index_topic_prerequisites_on_preq_topic_id"
+    t.index ["source_topic_id"], name: "index_topic_prerequisites_on_source_topic_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -18,4 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_20_133540) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "topic_prerequisites", "topics", column: "preq_topic_id"
+  add_foreign_key "topic_prerequisites", "topics", column: "source_topic_id"
 end
