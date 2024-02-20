@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if ENV["topics_dir"]
+    Dir.foreach(ENV["topics_dir"]) do |file|
+        next if file == "." or file == ".."
+        topicDirectory = ENV["topics_dir"] + "/" + file
+        topicDescriptionFile = topicDirectory + "/description.yaml"
+        topicContentsFile = topicDirectory + "/contents.md"
+        topicInfo = YAML.load_file(topicDescriptionFile)
+        topic = Topic.find_or_create_by!(title: topicInfo["title"])
+        topic.update!(content: File.read(topicContentsFile))
+    end
+end

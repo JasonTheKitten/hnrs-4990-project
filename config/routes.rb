@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   Rails.application.routes.draw do
     resources :topics
-    root "topics#index"
+    get "topics", to: "topics#index"
+    get "topics/:id", to: "topics#show"
   end
 end

@@ -1,1 +1,11 @@
-Hello, World!
+<h1>Topics</h1>
+
+<ul>
+    <% @topics.each do |topic| %>
+        <li>
+            <a href = "./<%= topic.id %>">
+                <%= topic.title %>
+            </a>
+        </li>
+    <% end %>
+</ul>
