@@ -13,10 +13,11 @@
  *= require_self
  */
 body {
+    --sample-color: #f0c95d;
     font-family: 'Open Sans';
 }
 code.prettyprint {
-    background-color: #f0c95d;
+    background-color: var(--sample-color);
 }
 pre > code.prettyprint {
     display: block;

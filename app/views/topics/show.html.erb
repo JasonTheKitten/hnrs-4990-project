@@ -13,5 +13,6 @@
     }) %>
     <%= raw Redcarpet::Markdown.new(renderer, extensions = {
         fenced_code_blocks: true,
+        tables: true,
     }).render(@topic.content) %>
 </div>
