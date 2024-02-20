@@ -1,11 +1,18 @@
-<h1>Topics</h1>
+<% content_for :title, "Browse Topics" %>
+<%= stylesheet_link_tag 'contentpage.css' %>
 
-<ul>
-    <% @topics.each do |topic| %>
-        <li>
-            <a href = "./<%= topic.id %>">
-                <%= topic.title %>
-            </a>
-        </li>
-    <% end %>
-</ul>
+<div id="content-header">
+    <h1>Topics</h1>
+</div>
+
+<div id="content">
+    <ul>
+        <% @topics.each do |topic| %>
+            <li>
+                <a href = "./<%= topic.id %>">
+                    <%= topic.title %>
+                </a>
+            </li>
+        <% end %>
+    </ul>
+</div>

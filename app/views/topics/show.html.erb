@@ -1,9 +1,17 @@
-<h1>Topic</h1>
-<h2><%= @topic.title %></h2>
-<a href = "/topics">Back to Topics List</a>
-<% renderer = Redcarpet::Render::HTML.new(render_options = {
-    escape_html: true,
-}) %>
-<%= raw Redcarpet::Markdown.new(renderer, extensions = {
-    fenced_code_blocks: true,
-}).render(@topic.content) %>
+<% content_for :title, @topic.title %>
+<%= stylesheet_link_tag 'contentpage.css' %>
+<%= stylesheet_link_tag 'topics/show.css' %>
+
+<div id = "content-header">
+    <h1 id = "content-title"><%= @topic.title %></h2>
+    <a href = "/topics" id = "backnav">Back to Topics List</a>
+</div>
+<div id = "content">
+    <% renderer = Redcarpet::Render::HTML.new(render_options = {
+        escape_html: true,
+        prettify: true,
+    }) %>
+    <%= raw Redcarpet::Markdown.new(renderer, extensions = {
+        fenced_code_blocks: true,
+    }).render(@topic.content) %>
+</div>

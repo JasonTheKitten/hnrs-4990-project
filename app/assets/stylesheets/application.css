@@ -10,6 +10,20 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+body {
+    font-family: 'Open Sans';
+}
+code.prettyprint {
+    background-color: #f0c95d;
+}
+pre > code.prettyprint {
+    display: block;
+    width: fit-content;
+    padding: 1em;
+}
+:not(pre) > code.prettyprint {
+    padding: 0.2em;
+    border-radius: 0.3em;
+}

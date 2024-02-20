@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   def index
+    require_trailing_slash
     @topics = Topic.all
   end
 
