@@ -1,0 +1,25 @@
+@media screen and (min-width: 1200px) {
+    #page-content {
+        display: grid;
+        grid-template-areas:
+            "header header"
+            "content about";
+    }
+
+    #content-header {
+        grid-area: header;
+    }
+    
+    #content {
+        grid-area: content;
+        width: 800px;
+    }
+    
+    #content-about {
+        grid-area: about;
+        width: 400px;
+        height: fit-content;
+        box-sizing: border-box;
+        margin-left: 16px;
+    }
+}

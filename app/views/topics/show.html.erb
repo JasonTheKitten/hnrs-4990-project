@@ -2,17 +2,27 @@
 <%= stylesheet_link_tag 'contentpage.css' %>
 <%= stylesheet_link_tag 'topics/show.css' %>
 
-<div id = "content-header">
-    <h1 id = "content-title"><%= @topic.title %></h2>
-    <a href = "/topics" id = "backnav">Back to Topics List</a>
-</div>
-<div id = "content">
-    <% renderer = Redcarpet::Render::HTML.new(render_options = {
-        escape_html: true,
-        prettify: true,
-    }) %>
-    <%= raw Redcarpet::Markdown.new(renderer, extensions = {
-        fenced_code_blocks: true,
-        tables: true,
-    }).render(@topic.content) %>
+<div id="page-content">
+    <div id="content-header" class="content-tile">
+        <h1 id="content-title"><%= @topic.title %></h2>
+        <a href="/topics" id="backnav">Back to Topics List</a>
+    </div>
+    <div id="content" class="content-tile">
+        <h2 class="tile-header">Lesson</h2>
+        <% renderer = Redcarpet::Render::HTML.new(render_options = {
+            escape_html: true,
+            prettify: true,
+        }) %>
+        <%= raw Redcarpet::Markdown.new(renderer, extensions = {
+            fenced_code_blocks: true,
+            tables: true,
+        }).render(@topic.content) %>
+    </div>
+
+    <div id="content-prerequisites" class="content-tile">
+        <h2 class="tile-header">Prerequisites</h2>
+    </div>
+    <div id="content-nextsteps" class="content-tile">
+        <h2 class="tile-header">Next Steps</h2>
+    </div>
 </div>

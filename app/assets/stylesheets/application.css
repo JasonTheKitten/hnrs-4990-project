@@ -18,6 +18,9 @@ body {
 }
 code.prettyprint {
     background-color: var(--sample-color);
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow: auto;
 }
 pre > code.prettyprint {
     display: block;
