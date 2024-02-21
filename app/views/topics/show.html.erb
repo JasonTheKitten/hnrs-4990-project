@@ -9,6 +9,9 @@
     </div>
     <div id="content-prerequisites" class="content-tile">
         <h2 class="tile-header">Prerequisites</h2>
+        <% if @topic.prerequisites.empty? %>
+            <p>This topic has no prerequisites.</p>
+        <% end %>
         <ul>
             <% @topic.prerequisites.each do |prereq| %>
                 <li><%= link_to(prereq.title, topic_path(prereq)) %></li>
@@ -28,7 +31,10 @@
     </div>
     <div id="content-nextsteps" class="content-tile">
         <h2 class="tile-header">Next Steps</h2>
-        <ul>
+        <% if @topic.nextsteps.empty? %>
+            <p>This topic has no next steps. Congratulations on finishing the current path!</p>
+        <% end %>
+        <ul>    
             <% @topic.nextsteps.each do |nextstep| %>
                 <li><%= link_to(nextstep.title, topic_path(nextstep)) %></li>
             <% end %>
