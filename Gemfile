@@ -71,3 +71,5 @@ gem "json", "~> 2.7"
 gem "yaml", "~> 0.3.0"
 
 gem "redcarpet", "~> 3.6"
+
+gem "pygments.rb", "~> 2.4"

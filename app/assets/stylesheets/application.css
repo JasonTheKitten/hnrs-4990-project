@@ -13,16 +13,16 @@
  *= require_self
  */
 body {
-    --sample-color: #f0c95d;
+    --sample-color: #fbf1c7;
     font-family: 'Open Sans';
 }
-code.prettyprint {
+code.prettyprint, div.highlight {
     background-color: var(--sample-color);
     box-sizing: border-box;
     max-width: 100%;
     overflow: auto;
 }
-pre > code.prettyprint {
+pre > code.prettyprint, div.highlight {
     display: block;
     width: fit-content;
     padding: 1em;

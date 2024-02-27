@@ -1,6 +1,9 @@
+<% require 'code_html_renderer' %>
+
 <% content_for :title, @topic.title %>
 <%= stylesheet_link_tag 'contentpage.css' %>
 <%= stylesheet_link_tag 'topics/show.css' %>
+<style><%= Pygments.css('.highlight') %></style>
 
 <div id="page-content">
     <div id="content-header" class="content-tile">
@@ -20,7 +23,7 @@
     </div>
     <div id="content" class="content-tile">
         <h2 class="tile-header">Lesson</h2>
-        <% renderer = Redcarpet::Render::HTML.new(render_options = {
+        <% renderer = CodeHtmlRenderer.new(render_options = {
             escape_html: true,
             prettify: true,
         }) %>
