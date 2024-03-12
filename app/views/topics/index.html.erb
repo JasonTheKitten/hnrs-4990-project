@@ -51,12 +51,38 @@
 <script type="module">
     const width = 800;
     const height = 600;
-    const radius = 50;
+    const radius = 60;
 
     import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
     const nodes = JSON.parse(document.getElementById("node-data").textContent);
     const links = JSON.parse(document.getElementById("link-data").textContent);
+
+    function textWrap(text, width) {
+        text.each(function() {
+            let text = d3.select(this);
+            let words = text.text().split(/\s+/);
+            let base = text.text(null);
+            let line = base.append("tspan").text(words.shift());
+            while (words.length > 0) {
+                let prevText = line.text();
+                let word = words.shift();
+                line.text(prevText + " " + word)
+                    .attr("text-anchor", "middle")
+                    .attr("x", width / 2);
+                if (line.node().getComputedTextLength() > width * .9) {
+                    line.text(prevText);
+                    line = base.append("tspan")
+                        .text(word)
+                        .attr("dy", "1em")
+                        .attr("text-anchor", "middle")
+                        .attr("x", width / 2);
+                }
+            }
+
+            text.attr("y", -line.node().getBBox().height / 2);
+        })
+    }
 
     function getNodeById(id) {
         return nodes.find(node => node.id === id);
@@ -82,14 +108,16 @@
 
     node.append("circle")
         .attr("r", radius)
-        .attr("cx", 50)
+        .attr("cx", radius)
         .attr("fill", "#69b3a2");
 
-    node.append("text")
+    let text = node.append("text")
         .text(d => d.title)
         .attr("fill", "#000000")
-        .attr("text-anchor", "middle")
-        .attr("x", radius);
+        .attr("x", radius)
+    setTimeout(() => {
+        text.call(textWrap, radius * 2);
+    }, 0);
 
     node.append("title")
         .text(d => d.title);
