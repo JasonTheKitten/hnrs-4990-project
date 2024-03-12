@@ -23,3 +23,7 @@
         margin-left: 16px;
     }
 }
+
+circle:hover, tspan:hover {
+    cursor: pointer !important;
+}

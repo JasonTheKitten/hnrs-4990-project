@@ -101,10 +101,7 @@
     const node = svg.selectAll(".node")
         .data(nodes).enter().append("g");
 
-    node
-        .attr("id", d => d.id)
-        .attr("x", 50)
-        .attr("y", 50);
+    node.attr("id", d => d.id);
 
     node.append("circle")
         .attr("r", radius)
